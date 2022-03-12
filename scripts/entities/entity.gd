@@ -3,7 +3,7 @@ class_name Entity
 
 var velocity: Vector2 = Vector2()
 var direction: Vector2 = Vector2()
-var max_speed: int = 100
+var max_speed: int = 50
 
 func load_ability(name):
   var scene = load("res://scenes/abilities/" + name + "/" + name + ".tscn")
