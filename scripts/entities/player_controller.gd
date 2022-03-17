@@ -10,11 +10,9 @@ onready var animation_state = animation_tree.get("parameters/playback")
 func handle_input() -> void:
   velocity = Vector2()
 
-  if Input.is_action_pressed("key_up"): move.execute(self, "up", animation_tree, animation_state)
-  elif Input.is_action_pressed("key_down"): move.execute(self, "down", animation_tree, animation_state)
-  elif Input.is_action_pressed("key_left"): move.execute(self, "left", animation_tree, animation_state)
-  elif Input.is_action_pressed("key_right"): move.execute(self, "right", animation_tree, animation_state)
-  else: move.execute(self, "idle", animation_tree, animation_state)
+  velocity.x = Input.get_action_strength('ui_right') - Input.get_action_strength('ui_left')
+  velocity.y = Input.get_action_strength('ui_down') - Input.get_action_strength('ui_up')
+  move.execute(self, animation_tree, animation_state)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
